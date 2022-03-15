@@ -35,7 +35,7 @@ FGenomePool UGenomePoolBPLibrary::Mutate(FGenomePool pool,float mutationRate)
 	return pool;
 }
 
-void UGenomePoolBPLibrary::ExtractParameters(FGenomePool pool,float& genomeSize, float& genomeCount)
+void UGenomePoolBPLibrary::ExtractParameters(FGenomePool pool,int& genomeSize, int& genomeCount)
 {
 	genomeSize = pool.genePool.genomeSize;
 	genomeCount = pool.genePool.genomeCount;
@@ -44,7 +44,9 @@ void UGenomePoolBPLibrary::ExtractParameters(FGenomePool pool,float& genomeSize,
 TArray<float> UGenomePoolBPLibrary::ExtractGenome(FGenomePool pool,int genomeIndex)
 {
 	TArray<float> retVal;
-	const float* dataPtr=gp::ExtractGenomeValues(pool.genePool,genomeIndex).get();
+	float* genome = new float[pool.genePool.genomeSize];
+	const float* dataPtr=gp::GetGenome(pool.genePool,genomeIndex,genome);
 	retVal.Append(dataPtr,pool.genePool.genomeSize);
+	delete genome;
 	return retVal;
 }

@@ -1,5 +1,5 @@
 #pragma once
-#include <memory>
+#include <list>
 
 using namespace std;
 
@@ -17,6 +17,7 @@ namespace gp {
 	extern void ArithmaticCrossover(GenomePool pool, double* scores, int scoreCount);
 	extern void Mutate(GenomePool pool, float mutationRate);
 	extern GenomePool ConfigGenomePool(GenomePool pool,int genomeSize, int genomeCount);
-	extern unique_ptr<float> ExtractGenomeValues(GenomePool pool,int genomeIndex);
+	extern float* GetGenome(GenomePool pool,int genomeIndex,
+		float *genome = NULL);
 	
 }

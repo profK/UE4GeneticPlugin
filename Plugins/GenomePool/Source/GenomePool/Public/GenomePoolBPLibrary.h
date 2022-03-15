@@ -49,7 +49,7 @@ class UGenomePoolBPLibrary : public UBlueprintFunctionLibrary
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Perform Mutation", Keywords = "GenomePool Genome"), Category = "Genome Pool")
 	static FGenomePool Mutate(FGenomePool pool,float mutationRate);
 	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Genepol Parameters", Keywords = "GenomePool Genome"), Category = "Genome Pool")
-	static void ExtractParameters(FGenomePool pool,float& genomeSize, float& genomeCount);
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Genepol Parameters", Keywords = "GenomePool Genome"), Category = "Genome Pool")
+	static void ExtractParameters(FGenomePool pool,int& genomeSize, int& genomeCount);
+	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Get Genome By Index", Keywords = "GenomePool Genome"), Category = "Genome Pool")
 	static TArray<float> ExtractGenome(FGenomePool pool,int genomeIndex);
 };
