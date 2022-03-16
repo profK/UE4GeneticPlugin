@@ -2,6 +2,8 @@
 
 #pragma once
 
+#include "FFMLP.h"
+#include "../../../../GenomePool/Source/GenomePool/Public/GenomePoolBPLibrary.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "FFMLPBPLibrary.generated.h"
 
@@ -22,11 +24,21 @@
 *	For more info on custom blueprint nodes visit documentation:
 *	https://wiki.unrealengine.com/Custom_Blueprint_Node_Creation
 */
+USTRUCT(BlueprintType)
+struct FNeuralNetworkPopulation
+{
+	GENERATED_BODY()
+	NeuralNet* nets;
+};
+
+
 UCLASS()
 class UFFMLPBPLibrary : public UBlueprintFunctionLibrary
 {
 	GENERATED_UCLASS_BODY()
 
-	UFUNCTION(BlueprintCallable, meta = (DisplayName = "Execute Sample function", Keywords = "FFMLP sample test testing"), Category = "FFMLPTesting")
-	static float FFMLPSampleFunction(float Param);
+	UFUNCTION(BlueprintCallable, meta = (
+		DisplayName = "Create Neural Net Population from genepool",
+		Keywords = "FFMLP Neural Net Genome"), Category = "FFMLPTesting")
+	static FNeuralNetworkPopulation MakeNets(FGenomePool genomes);
 };
