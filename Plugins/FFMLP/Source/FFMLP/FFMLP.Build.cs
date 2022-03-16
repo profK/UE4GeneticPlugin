@@ -38,6 +38,7 @@ public class FFMLP : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
+				"GenomePool",
 				// ... add private dependencies that you statically link with here ...	
 			}
 			);

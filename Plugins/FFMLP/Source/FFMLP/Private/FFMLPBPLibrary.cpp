@@ -9,8 +9,8 @@ UFFMLPBPLibrary::UFFMLPBPLibrary(const FObjectInitializer& ObjectInitializer)
 
 }
 
-float UFFMLPBPLibrary::FFMLPSampleFunction(float Param)
+FNeuralNetworkPopulation UFFMLPBPLibrary::MakeNets(FGenomePool genomes)
 {
-	return -1;
+	return FNeuralNetworkPopulation();
 }
 
