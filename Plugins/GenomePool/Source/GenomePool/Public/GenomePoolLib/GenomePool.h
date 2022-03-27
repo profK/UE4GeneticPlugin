@@ -5,6 +5,7 @@ using namespace std;
 
 /// This file defiens a C ABI for the GenomePoolClass
 
+
 namespace gp {
 
 	struct GenomePool {

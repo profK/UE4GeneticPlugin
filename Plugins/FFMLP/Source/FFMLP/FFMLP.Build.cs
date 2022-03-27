@@ -1,5 +1,6 @@
 // Some copyright should be here...
 
+using System.IO;
 using UnrealBuildTool;
 
 public class FFMLP : ModuleRules
@@ -7,6 +8,10 @@ public class FFMLP : ModuleRules
 	public FFMLP(ReadOnlyTargetRules Target) : base(Target)
 	{
 		PCHUsage = ModuleRules.PCHUsageMode.UseExplicitOrSharedPCHs;
+		
+		PublicAdditionalLibraries.Add(
+			Path.Combine(ModuleDirectory,"ThirdParty","Windows",
+				"GeneticFFNN.lib"));
 		
 		PublicIncludePaths.AddRange(
 			new string[] {

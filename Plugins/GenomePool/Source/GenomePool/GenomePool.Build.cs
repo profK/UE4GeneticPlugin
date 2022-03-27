@@ -16,7 +16,7 @@ public class GenomePool : ModuleRules
 		
 		PublicIncludePaths.AddRange(
 			new string[] {
-				// ... add public include paths required here ...
+				"FFMLP/Private/GeneticFFNN"
 			}
 			);
 				

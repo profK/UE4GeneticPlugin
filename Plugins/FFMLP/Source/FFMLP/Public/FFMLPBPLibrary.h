@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "GeneticFFNN/GeneticFFNN.h"
 #include "FFMLP.h"
 #include "../../../../GenomePool/Source/GenomePool/Public/GenomePoolBPLibrary.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
@@ -28,7 +29,7 @@ USTRUCT(BlueprintType)
 struct FNeuralNetworkPopulation
 {
 	GENERATED_BODY()
-	NeuralNet* nets;
+	nn::NeuralNetPool netPool;
 };
 
 
@@ -38,7 +39,12 @@ class UFFMLPBPLibrary : public UBlueprintFunctionLibrary
 	GENERATED_UCLASS_BODY()
 
 	UFUNCTION(BlueprintCallable, meta = (
-		DisplayName = "Create Neural Net Population from genepool",
-		Keywords = "FFMLP Neural Net Genome"), Category = "FFMLPTesting")
+		DisplayName = "Create Neural Net Population",
+		Keywords = "FFMLP Neural Net Genome"), Category = "FFMLP")
 	static FNeuralNetworkPopulation MakeNets(FGenomePool genomes);
+	UFUNCTION(BlueprintCallable, meta = (
+		DisplayName = "Process data with a neural net",
+		Keywords = "FFMLP Neural Net Genome"), Category = "FFMLP")
+	static TArray<float> ProcessData(FNeuralNetworkPopulation pop,
+		int netIndex, TArray<float> inputData);
 };
